@@ -1,0 +1,33 @@
+// Datalogger Service Definition
+//
+// This service allows a connected client (e.g., a phone)
+// to configure the datalogger and transfer data.
+
+// Custom Datalogger Service
+PRIMARY_SERVICE, 0xAAA0
+
+// Custom Timestamp Characteristic
+// Allows a client to write 7 bytes to set the RTC
+// Format: [Year_H, Year_L, Month, Day, Hour, Min, Sec]
+CHARACTERISTIC, 0xAAA1, WRITE | WRITE_WITHOUT_RESPONSE | DYNAMIC,
+
+// Command Characteristic (App -> Pico)
+// App writes commands here (e.g., "LIST" or "GET:2025-10-30.txt")
+CHARACTERISTIC, 0xAAA2, WRITE | WRITE_WITHOUT_RESPONSE | DYNAMIC,
+
+// Data Characteristic (Pico -> App)
+// Pico sends data back in chunks (e.g., file contents or file list)
+CHARACTERISTIC, 0xAAA3, NOTIFY | DYNAMIC,
+
+// Current PM2.5 Value Notification
+// Pico sends the current PM2.5 (CF=1) value (2 bytes)
+CHARACTERISTIC, 0xAAA4, NOTIFY | DYNAMIC,
+
+// Gas Sensor Data Notification
+// Payload: 16 bytes (4 x uint32_t: NO2, C2H5OH, VOC, CO)
+CHARACTERISTIC, 0xAAA5, NOTIFY | DYNAMIC,
+
+// Environmental Data Notification (SCD41)
+// Payload: 10 bytes 
+// [CO2 (2B), Temp (4B), Humidity (4B)]
+CHARACTERISTIC, 0xAAA6, NOTIFY | DYNAMIC,
