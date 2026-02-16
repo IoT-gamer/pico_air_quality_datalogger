@@ -1,6 +1,6 @@
-# Pico W Air Quality Datalogger (PM2.5 + Multi-Gas + CO2)
+# Pico 2 W Air Quality Datalogger (PM2.5 + Multi-Gas + CO2)
 
-This project implements a standalone Air Quality Monitor using a **Raspberry Pi Pico W**. It combines three powerful sensors to monitor particulate matter, gaseous pollutants, and environmental conditions:
+This project implements a standalone Air Quality Monitor using a **Raspberry Pi Pico 2 W**. It combines three powerful sensors to monitor particulate matter, gaseous pollutants, and environmental conditions:
 
 1.  **HM3301:** Laser Particulate Matter Sensor (PM1.0, PM2.5, PM10).
 2.  **Grove Multichannel Gas V2.0:** Monitors NO2, Ethanol, VOC, and Carbon Monoxide.
@@ -18,11 +18,11 @@ The device logs data to an **SD Card** every 15 minutes and acts as a **BLE Peri
     * **Live Updates:** Notifies connected clients of current PM2.5, Gas, and Environmental levels every 5 seconds.
     * **File Transfer:** Allows clients to request and stream logged files wirelessly.
     * **RTC Synchronization:** Syncs the Pico's internal clock via BLE for accurate timestamps.
-* **Low Power Design:** Uses the Pico's AON (Always-on) Timer for scheduling.
+* **Low Power Design:** Uses the Pico's AON (Always-on) Timer for scheduling. (note: the AON timer is only compatible with the RP2350-based Pico 2 W, not the original RP2040 Pico W)
 
 ## Hardware Requirements
 
-* **MCU:** Raspberry Pi Pico W (or Pico 2 W).
+* **MCU:** Raspberry Pi Pico 2 W (not the original Pico W, as the AON timer is required for low-power scheduling).
 * **PM Sensor:** HM3301 Laser PM2.5 Dust Sensor.
 * **Gas Sensor:** [Grove - Multichannel Gas Sensor V2.0](https://wiki.seeedstudio.com/Grove-Multichannel-Gas-Sensor-V2/).
 * **CO2 Sensor:** Sensirion SCD41 (or SCD4x series).
@@ -100,11 +100,11 @@ Example:
 
 3. Click `Compile` in bottom bar.
 
-4. Put your Pico W into BOOTSEL mode (hold the BOOTSEL button while plugging it in).
+4. Put your Pico 2 W into BOOTSEL mode (hold the BOOTSEL button while plugging it in).
 
 5. Click `Run` in bottom bar to flash the firmware.
 
-**Note:** Ensure your SD card is inserted into the SD card module before powering on the Pico W.
+**Note:** Ensure your SD card is inserted into the SD card module before powering on the Pico 2 W.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details
